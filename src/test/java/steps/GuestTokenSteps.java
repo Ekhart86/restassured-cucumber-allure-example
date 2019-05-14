@@ -24,7 +24,6 @@ public class GuestTokenSteps {
     public void статусОтвета(int statusCode) {
         System.out.println("\nОтвет: ");
         response.then().statusCode(statusCode).log().all();
-        System.out.println("\n");
     }
 
     @Тогда("^Ответ содержит токен гостя$")

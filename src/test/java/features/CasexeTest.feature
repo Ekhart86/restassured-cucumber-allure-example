@@ -1,6 +1,6 @@
 # language: ru
 
-@mvn
+@Casexe
 Функция: Тесты casexe
 
   @success
