@@ -4,7 +4,7 @@ import cucumber.api.java.ru.Когда;
 import cucumber.api.java.ru.Тогда;
 import executors.BaseExecutor;
 import io.restassured.response.Response;
-import models.GuestTokenResponse;
+import models.guest.GuestTokenResponse;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;

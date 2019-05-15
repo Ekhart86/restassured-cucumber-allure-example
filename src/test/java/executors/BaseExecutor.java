@@ -8,7 +8,7 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import models.GuestTokenRequest;
+import models.guest.GuestTokenRequest;
 
 import static constants.Endpoints.AUTHORIZATION_BASIC;
 import static io.restassured.RestAssured.given;
