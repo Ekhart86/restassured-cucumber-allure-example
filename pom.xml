@@ -23,7 +23,6 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>4.0.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
@@ -52,6 +51,12 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber-jvm</artifactId>
             <version>${allure.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>2.10.0</version>
         </dependency>
     </dependencies>
 

@@ -1,6 +1,6 @@
 package steps;
 
-import cucumber.api.java.ru.Дано;
+import cucumber.api.java.ru.Когда;
 import cucumber.api.java.ru.Тогда;
 import executors.BaseExecutor;
 import io.restassured.response.Response;
@@ -15,14 +15,13 @@ public class GuestTokenSteps {
     private BaseExecutor executor = new BaseExecutor();
     private Response response;
 
-    @Дано("^Отправляем запрос на получение токена гостя, с параметром scope - \"([^\"]*)\"$")
+    @Когда("^Отправляем запрос на получение токена гостя, с параметром scope - \"([^\"]*)\"$")
     public void получитьТокенГостя(String scope) {
         response = executor.getGuestToken("client_credentials", scope);
     }
 
     @Тогда("^Получаем статус ответа (\\d+)$")
     public void статусОтвета(int statusCode) {
-        System.out.println("\nОтвет: ");
         response.then().statusCode(statusCode).log().all();
     }
 
