@@ -1,16 +1,19 @@
 package models.guest;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
 public class GuestTokenRequest {
 
-    private String grant_type;
+    @JsonProperty("grant_type")
+    private String grantType;
 
+    @JsonProperty("scope")
     private String scope;
 
-    public GuestTokenRequest(String grant_type, String scope) {
-        this.grant_type = grant_type;
+    public GuestTokenRequest(String grantType, String scope) {
+        this.grantType = grantType;
         this.scope = scope;
     }
 }

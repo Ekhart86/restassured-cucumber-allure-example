@@ -1,9 +1,14 @@
 package models.register;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import static utils.Util.convertStringToBase64;
+import static utils.Util.generateRandomValue;
+
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RegisterPlayerRequest {
 
     @JsonProperty("username")
@@ -26,4 +31,14 @@ public class RegisterPlayerRequest {
 
     @JsonProperty("currency_code")
     private String currencyCode;
+
+    public RegisterPlayerRequest() {
+        String uniqueName = "test_user_" + generateRandomValue();
+        String password = convertStringToBase64("password_example");
+        username = uniqueName;
+        passwordChange = password;
+        passwordRepeat = password;
+        email = uniqueName + "@example.com";
+    }
+
 }

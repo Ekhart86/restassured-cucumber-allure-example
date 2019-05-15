@@ -10,24 +10,29 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 
-public class GuestTokenSteps {
+public class GuestTokenSteps extends BaseExecutor {
 
-    private BaseExecutor executor = new BaseExecutor();
+
     private Response response;
+    private GuestTokenResponse guestTokenResponse;
 
-    @Когда("^Отправляем запрос на получение токена гостя, с параметром scope - \"([^\"]*)\"$")
+
+    @Когда("^Отправляем запрос на получение токена гостя$")
     public void получитьТокенГостя(String scope) {
-        response = executor.getGuestToken("client_credentials", scope);
+        response = getGuestToken("client_credentials", "guest:default");
+        response.then().log().all();
     }
 
-    @Тогда("^Получаем статус ответа (\\d+)$")
+    @Тогда("^Ответ на запрос получения токена имеет статус код (\\d+)$")
     public void статусОтвета(int statusCode) {
-        response.then().statusCode(statusCode).log().all();
+        response.then().statusCode(statusCode);
     }
 
-    @Тогда("^Ответ содержит токен гостя$")
+    @Тогда("^Ответ на запрос получения токена содержит токен гостя$")
     public void ответСодержитТокен() {
-        GuestTokenResponse guestTokenResponse = response.then().extract().as(GuestTokenResponse.class);
+        guestTokenResponse = response.then().extract().as(GuestTokenResponse.class);
         assertThat(guestTokenResponse.getAccessToken(), is(not(emptyString())));
+        guestToken = guestTokenResponse.getAccessToken();
     }
+
 }
