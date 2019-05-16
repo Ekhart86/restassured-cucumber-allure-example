@@ -16,7 +16,16 @@ mvn allure:serve
 
 mvn clean test allure:serve
 
+Пример отчёта:
 
+
+![Allure 2 report](https://user-images.githubusercontent.com/25115868/57881644-83667400-782a-11e9-9c31-a71de0a31b82.png)
+
+К каждому шагу содежащему запрос, прикрепляется 2 файла, с запросом и ответом от сервера.
+
+![request](https://user-images.githubusercontent.com/25115868/57881771-d0e2e100-782a-11e9-9724-254bdbcfe8d5.png)
+
+![response](https://user-images.githubusercontent.com/25115868/57881797-dc360c80-782a-11e9-9961-ffa278734bba.png)
 
 
 
