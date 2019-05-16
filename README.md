@@ -23,9 +23,10 @@ mvn clean test allure:serve
 
 К каждому шагу содежащему запрос, прикрепляется 2 файла, с запросом и ответом от сервера.
 
-![request](https://user-images.githubusercontent.com/25115868/57881771-d0e2e100-782a-11e9-9724-254bdbcfe8d5.png)
 
-![response](https://user-images.githubusercontent.com/25115868/57881797-dc360c80-782a-11e9-9961-ffa278734bba.png)
+![request](https://user-images.githubusercontent.com/25115868/57882430-59ae4c80-782c-11e9-9b7e-968a6ebfd2d9.png)
+
+![response](https://user-images.githubusercontent.com/25115868/57882441-629f1e00-782c-11e9-8de3-a9e95a8eab3a.png)
 
 
 
