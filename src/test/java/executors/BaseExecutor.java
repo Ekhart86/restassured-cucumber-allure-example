@@ -16,6 +16,7 @@ import static utils.Util.convertStringToBase64;
 public class BaseExecutor {
 
     private final String authorizationBasicHeader = "Basic " + convertStringToBase64("front_2d6b0a8391742f5d789d7d915755e09e:");
+    public static Response currentResponse;
     public static String guestToken;
     public static String tokenAfterLogin;
     public static Integer userId;
@@ -30,7 +31,6 @@ public class BaseExecutor {
             .setAccept(ContentType.JSON)
             .addFilter(new AllureRestAssured())
             .build();
-
 
     /**
      * POST Запрос на получение токена гостя

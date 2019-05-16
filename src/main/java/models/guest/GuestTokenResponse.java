@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 public class GuestTokenResponse {
 
-
     @JsonProperty("token_type")
     private String tokenType;
 

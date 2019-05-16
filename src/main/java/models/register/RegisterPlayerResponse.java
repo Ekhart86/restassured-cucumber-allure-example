@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 public class RegisterPlayerResponse {
 
-
     @JsonProperty("id")
     private Integer id;
 

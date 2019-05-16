@@ -8,7 +8,6 @@ import static utils.Util.convertStringToBase64;
 import static utils.Util.generateRandomValue;
 
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class RegisterPlayerRequest {
 
     @JsonProperty("username")

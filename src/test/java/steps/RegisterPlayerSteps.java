@@ -3,7 +3,6 @@ package steps;
 import cucumber.api.java.ru.Когда;
 import cucumber.api.java.ru.Тогда;
 import executors.BaseExecutor;
-import io.restassured.response.Response;
 import models.register.RegisterPlayerRequest;
 import models.register.RegisterPlayerResponse;
 
@@ -13,25 +12,19 @@ import static org.hamcrest.Matchers.*;
 
 public class RegisterPlayerSteps extends BaseExecutor {
 
-    private Response response;
-    private RegisterPlayerRequest registerPlayerRequest = new RegisterPlayerRequest();
+    private RegisterPlayerRequest registerPlayerRequest;
     private RegisterPlayerResponse registerPlayerResponse;
 
-
-    @Когда("^Отправляем запрос на регистрацию нового игрока c гостевым токеном$")
-    public void отправляемЗапросНаРегистрациюНовогоИгрокаCГостевымТокеном() {
-        response = registerPlayer(registerPlayerRequest, guestToken);
-        response.then().log().all();
+    @Когда("^отправляем запрос c гостевым токеном на регистрацию нового игрока$")
+    public void отправляемЗапросСГостевымТокеномНаРегистрациюНовогоИгрока() {
+        registerPlayerRequest = new RegisterPlayerRequest();
+        currentResponse = registerPlayer(registerPlayerRequest, guestToken);
+        currentResponse.then().log().all();
     }
 
-    @Тогда("^Ответ на запрос регистрации имеет статус код (\\d+)$")
-    public void статусОтвета(int statusCode) {
-        response.then().statusCode(statusCode);
-    }
-
-    @Тогда("^Ответ на запрос регистрации соответствует документации$")
+    @Тогда("^ответ сервера на запрос регистрации соответствует документации$")
     public void ответНаЗапросРегистрацииСоответствуетДокументации() {
-        registerPlayerResponse = response.then().extract().as(RegisterPlayerResponse.class);
+        registerPlayerResponse = currentResponse.then().extract().as(RegisterPlayerResponse.class);
         assertThat(registerPlayerResponse.getId(), is(notNullValue()));
         assertThat(registerPlayerResponse.getUsername(), equalTo(registerPlayerRequest.getUsername()));
         assertThat(registerPlayerResponse.getEmail(), equalTo(registerPlayerRequest.getEmail()));
