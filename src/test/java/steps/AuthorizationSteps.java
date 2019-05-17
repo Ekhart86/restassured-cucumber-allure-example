@@ -11,11 +11,12 @@ import static org.hamcrest.Matchers.*;
 
 public class AuthorizationSteps extends BaseExecutor {
 
-    private AuthorizationRequest authorizationRequest = new AuthorizationRequest(username, userPassword);
+    private AuthorizationRequest authorizationRequest;
     private AuthorizationResponse authorizationResponse;
 
     @Когда("^отправляем запрос на авторизацию под созданным игроком$")
     public void отправляемЗапросНаАвторизациюПодСозданнымИгроком() {
+        authorizationRequest = new AuthorizationRequest(username, userPassword);
         currentResponse = authorizationByCreatedPlayer(authorizationRequest);
         currentResponse.then().log().all();
     }
