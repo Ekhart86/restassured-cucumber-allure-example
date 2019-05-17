@@ -6,6 +6,6 @@ public class Endpoints {
     public static final String REGISTRATION = "/v2/players";
     public static final String AUTHORIZATION = "/v2/oauth2/token";
     public static final String CLIENT_CREDENTIALS_GRANT = "/v2/oauth2/token";
-    public static final String GET_PROFILE = "/v2/players/%d";
+    public static final String GET_PROFILE = "/v2/players/";
 
 }

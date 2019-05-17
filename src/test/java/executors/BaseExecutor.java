@@ -3,6 +3,7 @@ package executors;
 import constants.Endpoints;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -29,6 +30,7 @@ public class BaseExecutor {
             .setBaseUri(Endpoints.BASE_URL)
             .setContentType(ContentType.JSON)
             .setAccept(ContentType.JSON)
+            .log(LogDetail.ALL)
             .addFilter(new AllureRestAssured())
             .build();
 
@@ -41,8 +43,6 @@ public class BaseExecutor {
                 .spec(requestSpecification)
                 .header("Authorization", authorizationBasicHeader)
                 .body(new GuestTokenRequest(grantType, scope))
-                .log()
-                .all()
                 .post(Endpoints.CLIENT_CREDENTIALS_GRANT);
     }
 
@@ -54,8 +54,6 @@ public class BaseExecutor {
                 .spec(requestSpecification)
                 .header("Authorization", "Bearer " + guestToken)
                 .body(body)
-                .log()
-                .all()
                 .post(Endpoints.REGISTRATION);
     }
 
@@ -67,8 +65,6 @@ public class BaseExecutor {
                 .spec(requestSpecification)
                 .header("Authorization", authorizationBasicHeader)
                 .body(body)
-                .log()
-                .all()
                 .post(Endpoints.AUTHORIZATION);
     }
 
@@ -79,8 +75,6 @@ public class BaseExecutor {
         return given()
                 .spec(requestSpecification)
                 .header("Authorization", "Bearer " + tokenAfterLogin)
-                .log()
-                .all()
-                .get(String.format(Endpoints.GET_PROFILE, userId));
+                .get(Endpoints.GET_PROFILE + userId);
     }
 }
